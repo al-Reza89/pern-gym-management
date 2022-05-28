@@ -8,21 +8,21 @@
 
 
 
-CREATE TABLE admin (
-    id BIGSERIAL NOT NULL PRIMARY KEY ,
-    admin_name VARCHAR(50) NOT NULL ,
-    admin_email VARCHAR(50) NOT NULL UNIQUE,
-    admin_password VARCHAR(50) NOT NULL 
+-- CREATE TABLE admin (
+--     id BIGSERIAL NOT NULL PRIMARY KEY ,
+--     admin_name VARCHAR(50) NOT NULL ,
+--     admin_email VARCHAR(50) NOT NULL UNIQUE,
+--     admin_password VARCHAR(50) NOT NULL 
     
-);
+-- );
 
-INSERT INTO admin (admin_name,admin_email,admin_password) values ('Omar','omar77@email.com','123456');
-DELETE from admin where admin_id=2;
+-- INSERT INTO admin (admin_name,admin_email,admin_password) values ('Omar','omar77@email.com','123456');
+-- DELETE from admin where admin_id=2;
 
-CREATE TABLE admin_login(
-    admin_email VARCHAR(50) NOT NULL UNIQUE,
-    admin_password VARCHAR NOT NULL 
-);
+-- CREATE TABLE admin_login(
+--     admin_email VARCHAR(50) NOT NULL UNIQUE,
+--     admin_password VARCHAR NOT NULL 
+-- );
 
 
 
@@ -41,16 +41,12 @@ CREATE TABLE members_signup (
 
 INSERT INTO members_signup (first_name,middle_name,last_name,email,gender,password) values ('Ali','Al','Reza','reza89@gmail.com','male','1234567');
 
-CREATE TABLE member_login(
+CREATE TABLE login(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     member_email VARCHAR(50) NOT NULL UNIQUE,
-    member_password VARCHAR(50) NOT NULL 
+    member_password VARCHAR(50) NOT NULL,
+    isAdmin boolean DEFAULT false
 );
-
-
-
-
-
 
 
 
