@@ -8,15 +8,15 @@
 
 
 
--- CREATE TABLE admin (
---     id BIGSERIAL NOT NULL PRIMARY KEY ,
---     admin_name VARCHAR(50) NOT NULL ,
---     admin_email VARCHAR(50) NOT NULL UNIQUE,
---     admin_password VARCHAR(50) NOT NULL 
+CREATE TABLE admin (
+    id BIGSERIAL NOT NULL PRIMARY KEY ,
+    admin_name VARCHAR(50) NOT NULL ,
+    admin_email VARCHAR(50) NOT NULL UNIQUE,
+    admin_password VARCHAR(50) NOT NULL 
     
--- );
+);
 
--- INSERT INTO admin (admin_name,admin_email,admin_password) values ('Omar','omar77@email.com','123456');
+INSERT INTO admin (admin_name,admin_email,admin_password) values ('Omar','omar77@email.com','123456');
 -- DELETE from admin where admin_id=2;
 
 -- CREATE TABLE admin_login(
@@ -60,7 +60,7 @@ CREATE TABLE  packages (
 ) ;
 
 
-INSERT INTO packages ( package, descriptions, amount) VALUES( 'Sample Package', 'Program sample  + trainer',1 );
+INSERT INTO packages ( package, descriptions, amount,member_id) VALUES( 'Sample Package', 'Program sample  + trainer',1000,1 );
 
 CREATE TABLE  payments  (
    id  BIGSERIAL NOT NULL PRIMARY KEY,
@@ -101,7 +101,7 @@ CREATE TABLE workoutPlan (
 INSERT INTO workoutPlan (member_id,instructor_id,workout_time) values(1,1,'2 hours');
 
 
-CREATE TABLE registration_info (
+CREATE TABLE users_info (
   id BIGSERIAL NOT NULL PRIMARY KEY,
   member_id BIGINT NOT NULL REFERENCES members_signup(id),
   package_id BIGINT REFERENCES   packages(id),
@@ -113,4 +113,4 @@ CREATE TABLE registration_info (
 );
 
 
-INSERT INTO registration_info ( member_id, package_id, instructor_id, status) VALUES( 1, 1,1,  'inactive');
+INSERT INTO users_info ( member_id, package_id, instructor_id, status) VALUES( 1, 1,1,  'inactive');
