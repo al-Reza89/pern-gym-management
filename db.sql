@@ -34,7 +34,7 @@ CREATE TABLE members_signup (
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
-    joining_date DATE DEFAULT current_timestamp ,
+    joining_date DATE NOT NULL DEFAULT current_timestamp ,
     gender VARCHAR(30) NOT NULL
     
 );
@@ -67,7 +67,7 @@ CREATE TABLE  payments  (
    amount  BIGINT NOT NULL,
    remarks  text NOT NULL,
    payment_type varchar(100) NOT NULL,
-   date_created  DATE  DEFAULT current_timestamp,
+   date_created  DATE NOT NULL  DEFAULT current_timestamp,
     member_id BIGINT REFERENCES members_signup(id)
 );
 
@@ -105,11 +105,11 @@ CREATE TABLE registration_info (
   id BIGSERIAL NOT NULL PRIMARY KEY,
   member_id BIGINT NOT NULL REFERENCES members_signup(id),
   package_id BIGINT REFERENCES   packages(id),
-  start_date date DEFAULT current_timestamp,
-  end_date date DEFAULT current_timestamp,
+  start_date date NOT NULL DEFAULT current_timestamp,
+  end_date date NOT NULL DEFAULT current_timestamp,
   instructor_id BIGINT NOT NULL REFERENCES instructors(id),
   status varchar(50) NOT NULL DEFAULT 'active',
-  date_created date DEFAULT current_timestamp
+  date_created date NOT NULL DEFAULT current_timestamp
 );
 
 
