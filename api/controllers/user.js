@@ -14,32 +14,6 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-const createUser = async (req, res, next) => {
-  // const failed = true;
-  // if (failed) return next(createError("401", "from create error"));
-
-  try {
-    const results = await db.query(
-      "INSERT INTO members_signup  ( first_name,middle_name ,last_name ,email , password, gender ) VALUES( $1,$2,$3,$4,$5,$6) returning *",
-      [
-        req.body.first_name,
-        req.body.middle_name,
-        req.body.last_name,
-        req.body.email,
-        req.body.password,
-        req.body.gender,
-      ]
-    );
-
-    res.status(201).json({
-      status: "success",
-      data: results.rows[0],
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
 const deleteUser = async (req, res, next) => {
   try {
     const results = await db.query("delete from members_signup where id = $1", [
@@ -93,7 +67,6 @@ const updateUser = async (req, res, next) => {
 
 module.exports = {
   getUsers,
-  createUser,
   deleteUser,
   getUser,
   updateUser,

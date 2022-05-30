@@ -35,7 +35,8 @@ CREATE TABLE members_signup (
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
     joining_date DATE NOT NULL DEFAULT current_timestamp ,
-    gender VARCHAR(30) NOT NULL
+    gender VARCHAR(30) NOT NULL,
+    isAdmin boolean DEFAULT false
     
 );
 

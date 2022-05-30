@@ -8,12 +8,14 @@ const workoutplansRoute = require("./routes/workoutPlan");
 const adminsRoute = require("./routes/admins");
 const paymentsRoute = require("./routes/payments");
 const usersInfoRoute = require("./routes/registrationInfo");
+const authRoute = require("./routes/auth");
 
 const app = express();
 const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
+app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/admins", adminsRoute);
 app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/packages", packagesRoute);
