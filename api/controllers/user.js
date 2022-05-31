@@ -29,7 +29,7 @@ const deleteUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const result = await db.query("select * from users where id=$1", [
+    const result = await db.query("select * from users where id=$1  ", [
       req.params.id,
     ]);
     res.status(200).json({

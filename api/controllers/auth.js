@@ -29,14 +29,22 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const user = await db.query("select * from users where email=$1", [
+    const user = await db.query("select * from users where email=$1 ", [
       req.body.email,
     ]);
     if (!user.rowCount) return next(createError(404, "User not found"));
+    const { rows } = user;
+
+    const password = rows[0].password;
+
+    const isPasswordCorrect = await bcrypt.compare(req.body.password, password);
+    if (!isPasswordCorrect) {
+      return next(createError("404", "Wrong password or username"));
+    }
 
     res.status(201).json({
       status: "success",
-      data: user,
+      user: user.rows,
     });
   } catch (err) {
     next(err);
