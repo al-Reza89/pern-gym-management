@@ -1,16 +1,19 @@
 const db = require("../db");
 const { createError } = require("../utils/error");
+const bcrypt = require("bcryptjs");
 
 const register = async (req, res, next) => {
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.password, salt);
   try {
     const results = await db.query(
-      "INSERT INTO members_signup  ( first_name,middle_name ,last_name ,email , password, gender ) VALUES( $1,$2,$3,$4,$5,$6) returning *",
+      "INSERT INTO users  ( first_name,middle_name ,last_name ,email , password, gender ) VALUES( $1,$2,$3,$4,$5,$6) returning *",
       [
         req.body.first_name,
         req.body.middle_name,
         req.body.last_name,
         req.body.email,
-        req.body.password,
+        hash,
         req.body.gender,
       ]
     );
@@ -26,7 +29,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const user = await db.query("select * from members_signup where email=$1", [
+    const user = await db.query("select * from users where email=$1", [
       req.body.email,
     ]);
     if (!user.rowCount) return next(createError(404, "User not found"));

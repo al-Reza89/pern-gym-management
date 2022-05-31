@@ -3,7 +3,7 @@ const db = require("../db");
 
 const getUsers = async (req, res, next) => {
   try {
-    const allmembers = await db.query("select * from members_signup");
+    const allmembers = await db.query("select * from users");
     res.status(200).json({
       status: "success",
       length: allmembers.rows.length,
@@ -16,7 +16,7 @@ const getUsers = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    const results = await db.query("delete from members_signup where id = $1", [
+    const results = await db.query("delete from users where id = $1", [
       req.params.id,
     ]);
     res.status(204).json({
@@ -29,7 +29,7 @@ const deleteUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const result = await db.query("select * from members_signup where id=$1", [
+    const result = await db.query("select * from users where id=$1", [
       req.params.id,
     ]);
     res.status(200).json({
@@ -44,7 +44,7 @@ const getUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const results = await db.query(
-      "update members_signup set first_name=$1,middle_name=$2,last_name=$3,gender=$4,password=$5,email=$6,joining_date=$7 where id=$8 returning * ",
+      "update users set first_name=$1,middle_name=$2,last_name=$3,gender=$4,password=$5,email=$6,joining_date=$7 where id=$8 returning * ",
       [
         req.body.first_name,
         req.body.middle_name,
