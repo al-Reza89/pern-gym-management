@@ -1,6 +1,7 @@
 const db = require("../db");
 const { createError } = require("../utils/error");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const register = async (req, res, next) => {
   const salt = bcrypt.genSaltSync(10);
@@ -42,10 +43,20 @@ const login = async (req, res, next) => {
       return next(createError("404", "Wrong password or username"));
     }
 
-    res.status(201).json({
-      status: "success",
-      user: user.rows,
-    });
+    const token = jwt.sign(
+      {
+        id: rows[0].id,
+        isAdmin: rows[0].isAdmin,
+      },
+      process.env.JWT
+    );
+
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json({ status: "successfully create token", user: user.rows });
   } catch (err) {
     next(err);
   }
