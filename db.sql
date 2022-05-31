@@ -36,7 +36,7 @@ CREATE TABLE users (
     password VARCHAR NOT NULL,
     joining_date DATE NOT NULL DEFAULT current_timestamp ,
     gender VARCHAR(30) NOT NULL,
-    isAdmin boolean DEFAULT false
+    isadmin boolean DEFAULT false
     
 );
 

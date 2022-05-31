@@ -10,7 +10,6 @@ const verifyToken = (req, res, next) => {
   jwt.verify(token, process.env.JWT, (err, user) => {
     if (err) return next(createError(401, "token is not valid!"));
     req.user = user;
-    // console.log(user);
     next();
   });
 };
@@ -29,7 +28,8 @@ const verifyUser = (req, res, next) => {
 
 const verifyAdmin = (req, res, next) => {
   verifyToken(req, res, next, () => {
-    if (req.user.isAdmin) {
+    if (req.user.isadmin) {
+      console.log(req.user.isadmin);
       next();
     } else {
       if (err) return next(createError(401, "you are not authoreized"));

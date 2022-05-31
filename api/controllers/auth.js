@@ -8,7 +8,7 @@ const register = async (req, res, next) => {
   const hash = bcrypt.hashSync(req.body.password, salt);
   try {
     const results = await db.query(
-      "INSERT INTO users  ( first_name,middle_name ,last_name ,email , password, gender ) VALUES( $1,$2,$3,$4,$5,$6) returning *",
+      "INSERT INTO users  ( first_name,middle_name ,last_name ,email , password, gender,isAdmin ) VALUES( $1,$2,$3,$4,$5,$6,$7) returning *",
       [
         req.body.first_name,
         req.body.middle_name,
@@ -16,6 +16,7 @@ const register = async (req, res, next) => {
         req.body.email,
         hash,
         req.body.gender,
+        req.body.isAdmin,
       ]
     );
 
@@ -37,6 +38,7 @@ const login = async (req, res, next) => {
     const { rows } = user;
 
     const password = rows[0].password;
+    // const isAdmin = rows[0].isadmin;
 
     const isPasswordCorrect = await bcrypt.compare(req.body.password, password);
     if (!isPasswordCorrect) {
@@ -46,7 +48,7 @@ const login = async (req, res, next) => {
     const token = jwt.sign(
       {
         id: rows[0].id,
-        isAdmin: rows[0].isAdmin,
+        isadmin: rows[0].isadmin,
       },
       process.env.JWT
     );

@@ -22,7 +22,7 @@ const deleteUser = async (req, res, next) => {
     res.status(204).json({
       status: "success",
     });
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 };
