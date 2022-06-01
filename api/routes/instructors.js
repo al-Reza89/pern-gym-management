@@ -6,12 +6,13 @@ const {
   getInstructor,
   updateInstructor,
 } = require("../controllers/instructor");
+const { verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
-router.get("/", getInstructors);
-router.post("/", createInstructor);
-router.delete("/:id", deleteInstructor);
-router.get("/:id", getInstructor);
-router.put("/:id", updateInstructor);
+router.get("/", verifyAdmin, getInstructors);
+router.post("/", verifyAdmin, createInstructor);
+router.delete("/:id", verifyAdmin, deleteInstructor);
+router.get("/:id", verifyAdmin, getInstructor);
+router.put("/:id", verifyAdmin, updateInstructor);
 
 module.exports = router;
