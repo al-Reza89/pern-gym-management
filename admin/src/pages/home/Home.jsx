@@ -1,5 +1,6 @@
 import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/Featured";
+import HomeTable from "../../components/homeTable/HomeTable";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Widget from "../../components/widget/Widget";
@@ -20,6 +21,10 @@ const Home = () => {
         <div className="charts">
           <Featured />
           <Chart />
+        </div>
+        <div className="listContainer">
+          <div className="listTitle">Latest Admitted</div>
+          <HomeTable />
         </div>
       </div>
     </div>
