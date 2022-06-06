@@ -21,7 +21,7 @@ export const userColumns = [
 
   {
     field: "gender",
-    headerName: "GENDER",
+    headerName: "Gender",
     width: 200,
   },
   {
@@ -38,7 +38,7 @@ export const userColumns = [
   },
   {
     field: "joining_date",
-    headerName: "JOINING DATE",
+    headerName: "Joining Date",
     width: 250,
   },
 ];
