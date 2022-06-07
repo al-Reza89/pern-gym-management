@@ -6,6 +6,7 @@ import Instructors from "./pages/instructors/Instructors";
 import Packages from "./pages/packages/Packages";
 import Payments from "./pages/payments/Payments";
 import WorkoutDetails from "./pages/workoutDetails/WorkoutDetails";
+import AddUser from "./pages/addUser/AddUser";
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
-            <Route path="users" element={<Users />} />
+            <Route path="users">
+              <Route index element={<Users />} />
+              <Route path="addnew" element={<AddUser />} />
+            </Route>
             <Route path="instructors" element={<Instructors />} />
             <Route path="packages" element={<Packages />} />
             <Route path="payments" element={<Payments />} />

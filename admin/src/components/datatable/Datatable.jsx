@@ -3,8 +3,12 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Button } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 
 const Datatable = () => {
+  const loction = useLocation();
+  const path = loction.pathname.split("/")[1];
+
   const actionColumn = [
     {
       field: "action",
@@ -26,9 +30,11 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New Users
-        <Button variant="contained" className="link">
-          Add New{" "}
-        </Button>
+        <Link to={`/${path}/addnew`} style={{ textDecoration: "none" }}>
+          <Button variant="contained" className="link">
+            Add New{" "}
+          </Button>
+        </Link>
       </div>
       <DataGrid
         rows={userRows}
