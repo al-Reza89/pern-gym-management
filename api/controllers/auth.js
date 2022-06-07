@@ -58,7 +58,7 @@ const login = async (req, res, next) => {
         httpOnly: true,
       })
       .status(200)
-      .json({ status: "successfully create token", user: user.rows });
+      .json({ status: "successfully create token", user: user.rows[0] });
   } catch (err) {
     next(err);
   }

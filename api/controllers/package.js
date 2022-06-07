@@ -54,7 +54,7 @@ const getPackage = async (req, res, next) => {
     ]);
     res.status(200).json({
       status: "success",
-      data: result.rows,
+      data: result.rows[0],
     });
   } catch (err) {
     next(err);
@@ -75,7 +75,7 @@ const updatePackage = async (req, res, next) => {
     );
     res.status(200).json({
       status: "success",
-      data: results.rows,
+      data: results.rows[0],
     });
   } catch (err) {
     next(err);
