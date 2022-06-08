@@ -24,10 +24,18 @@ function App() {
                 element={<AddUser inputs={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="instructors" element={<Instructors />} />
-            <Route path="packages" element={<Packages />} />
-            <Route path="payments" element={<Payments />} />
-            <Route path="workoutDetails" element={<WorkoutDetails />} />
+            <Route path="instructors">
+              <Route index element={<Instructors />} />
+            </Route>
+            <Route path="packages">
+              <Route index element={<Packages />} />
+            </Route>
+            <Route path="payments" element={<Payments />}>
+              <Route index element={<Payments />} />
+            </Route>
+            <Route path="workoutDetails">
+              <Route index element={<WorkoutDetails />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

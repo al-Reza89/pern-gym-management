@@ -1,11 +1,11 @@
 import "./datatable.scss";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../datatablesource";
 import { Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 
-const Datatable = () => {
+const Datatable = ({ dataRows }) => {
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
 
@@ -37,7 +37,7 @@ const Datatable = () => {
         </Link>
       </div>
       <DataGrid
-        rows={userRows}
+        rows={dataRows}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[]}
