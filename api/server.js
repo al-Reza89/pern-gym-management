@@ -22,7 +22,7 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/packages", packagesRoute);
 app.use("/api/v1/instructors", instructorsRoute);
-app.use("/api/v1/workoutplans", workoutplansRoute);
+app.use("/api/v1/workoutDetails", workoutplansRoute);
 app.use("/api/v1/payments", paymentsRoute);
 app.use("/api/v1/usersInfo", usersInfoRoute);
 

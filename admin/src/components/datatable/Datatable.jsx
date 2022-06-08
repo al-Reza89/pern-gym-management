@@ -1,13 +1,27 @@
 import "./datatable.scss";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../datatablesource";
+import { userColumns, userRows } from "../../datatablesource";
 import { Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
 
 const Datatable = ({ dataRows, title }) => {
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
+
+  const { data, loading, error } = useFetch(`${path}`);
+  const [list, setList] = useState();
+
+  useEffect(() => {
+    setList(data.data);
+  }, [data]);
+
+  console.log(list);
+
+  // console.log(data.data);
+  // console.log(userRows);
 
   const actionColumn = [
     {
@@ -37,11 +51,14 @@ const Datatable = ({ dataRows, title }) => {
         </Link>
       </div>
       <DataGrid
-        rows={dataRows}
+        // rows={list}
+        rows={userRows}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[]}
-        checkboxSelection
+        getRowId={(row) => row.id}
+        headerHeight={75}
+        rowHeight={65}
       />
     </div>
   );

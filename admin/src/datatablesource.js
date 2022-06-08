@@ -1,7 +1,7 @@
 export const userColumns = [
   { field: "id", headerName: "ID", width: 100 },
   {
-    field: "username",
+    field: "first_name",
     headerName: "Name",
     width: 300,
     // renderCell: (params) => {
@@ -46,7 +46,25 @@ export const userColumns = [
 //temporary data
 export const userRows = [
   {
-    id: 1,
+    id: "1",
+    username: "No name",
+    img: "",
+    status: "active",
+    email: "noName@gmail.com",
+    gender: "male",
+    joining_date: "20-11-2012",
+  },
+  {
+    id: "1",
+    username: "No name",
+    img: "",
+    status: "active",
+    email: "noName@gmail.com",
+    gender: "male",
+    joining_date: "20-11-2012",
+  },
+  {
+    id: "1",
     username: "No name",
     img: "",
     status: "active",

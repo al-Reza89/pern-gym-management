@@ -6,7 +6,6 @@ const getUsers = async (req, res, next) => {
     const allmembers = await db.query("select * from users");
     res.status(200).json({
       status: "success",
-      length: allmembers.rows.length,
       data: allmembers.rows,
     });
   } catch (err) {
