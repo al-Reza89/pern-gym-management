@@ -11,7 +11,7 @@ const Instructors = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable dataRows={userRows} />
+        <Datatable dataRows={userRows} title="Add New Instructor" />
       </div>
     </div>
   );

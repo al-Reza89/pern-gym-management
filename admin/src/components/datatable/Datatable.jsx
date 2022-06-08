@@ -5,7 +5,7 @@ import { userColumns } from "../../datatablesource";
 import { Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 
-const Datatable = ({ dataRows }) => {
+const Datatable = ({ dataRows, title }) => {
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
 
@@ -29,7 +29,7 @@ const Datatable = ({ dataRows }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New Users
+        {title}
         <Link to={`/${path}/addnew`} style={{ textDecoration: "none" }}>
           <Button variant="contained" className="link">
             Add New{" "}

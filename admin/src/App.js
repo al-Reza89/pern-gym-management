@@ -7,7 +7,13 @@ import Packages from "./pages/packages/Packages";
 import Payments from "./pages/payments/Payments";
 import WorkoutDetails from "./pages/workoutDetails/WorkoutDetails";
 import AddUser from "./pages/addUser/AddUser";
-import { userInputs } from "./formSource";
+import {
+  instructorInputs,
+  packageInputs,
+  paymentInputs,
+  userInputs,
+  workoutdetailInputs,
+} from "./formSource";
 
 function App() {
   return (
@@ -26,15 +32,45 @@ function App() {
             </Route>
             <Route path="instructors">
               <Route index element={<Instructors />} />
+              <Route
+                path="addnew"
+                element={
+                  <AddUser
+                    inputs={instructorInputs}
+                    title="Add New instructor"
+                  />
+                }
+              />
             </Route>
             <Route path="packages">
               <Route index element={<Packages />} />
+              <Route
+                path="addnew"
+                element={
+                  <AddUser inputs={packageInputs} title="Add new Package" />
+                }
+              />
             </Route>
-            <Route path="payments" element={<Payments />}>
+            <Route path="payments">
               <Route index element={<Payments />} />
+              <Route
+                path="addnew"
+                element={
+                  <AddUser inputs={paymentInputs} title="Add new Payment" />
+                }
+              />
             </Route>
             <Route path="workoutDetails">
               <Route index element={<WorkoutDetails />} />
+              <Route
+                path="addnew"
+                element={
+                  <AddUser
+                    inputs={workoutdetailInputs}
+                    title="Add new workout plan"
+                  />
+                }
+              />
             </Route>
           </Route>
         </Routes>
