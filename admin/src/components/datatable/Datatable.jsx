@@ -7,23 +7,36 @@ import { Link, useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BaseUrl from "../../api/BaseUrl";
 
 const Datatable = ({ dataRows, title }) => {
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
 
-  // const { data, loading, error } = useFetch(`${path}`)
   const [list, setList] = useState([]);
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await axios.get(`http://localhost:3001/api/v1/${path}`);
+  //     console.log({ data: res.data });
+  //     setList(res.data.data);
+  //   })();
+  // }, [path]);
+  // // console.log({ data: res.data.data });
+  // console.log({ userRows });
+
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(`http://localhost:3001/api/v1/${path}`);
-      console.log({ data: res.data });
-      setList(res.data.data);
-    })();
-  }, []);
-  // console.log({ data: res.data.data });
-  console.log({ userRows });
+    const fetchData = async () => {
+      try {
+        const response = await BaseUrl.get(`/${path}`);
+        // console.log({ res: response.data.data });
+        setList(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [path]);
 
   const actionColumn = [
     {
@@ -53,8 +66,6 @@ const Datatable = ({ dataRows, title }) => {
         </Link>
       </div>
       <DataGrid
-        // rows={list}
-        // rows={userRows}
         rows={list}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
