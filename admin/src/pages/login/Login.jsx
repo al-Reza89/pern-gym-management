@@ -11,18 +11,58 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import BaseUrl from "../../api/BaseUrl";
 
 const theme = createTheme();
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  console.log({
-    email: data.get("email"),
-    password: data.get("password"),
-  });
-};
 
 const Login = () => {
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const res = await BaseUrl.post("/auth/login", {
+        email: credentials.email,
+        password: credentials.password,
+      });
+      // console.log(res);
+      // console.log(res.data.user.isadmin);
+
+      if (res.data.user.isadmin) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "you are not allowed" },
+        });
+      }
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.res.data });
+    }
+  };
+
+  console.log(credentials);
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -41,17 +81,13 @@ const Login = () => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
               id="email"
+              onChange={handleChange}
               label="Email Address"
               name="email"
               autoComplete="email"
@@ -65,6 +101,7 @@ const Login = () => {
               label="Password"
               type="password"
               id="password"
+              onChange={handleChange}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -72,6 +109,8 @@ const Login = () => {
               label="Remember me"
             />
             <Button
+              // disabled={loading}
+              onClick={handleClick}
               type="submit"
               fullWidth
               variant="contained"
