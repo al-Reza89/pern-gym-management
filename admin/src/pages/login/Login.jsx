@@ -48,7 +48,7 @@ const Login = () => {
       // console.log(res.data.user.isadmin);
 
       if (res.data.user.isadmin) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
         navigate("/");
       } else {
         dispatch({
@@ -57,7 +57,8 @@ const Login = () => {
         });
       }
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.res.data });
+      // console.log(err.response.data.message);
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data.message });
     }
   };
 
@@ -118,6 +119,7 @@ const Login = () => {
             >
               Sign In
             </Button>
+            {/* {error && <span>{error.message}</span>} */}
           </Box>
         </Box>
       </Container>

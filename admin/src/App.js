@@ -14,8 +14,13 @@ import {
   userInputs,
   workoutdetailInputs,
 } from "./formSource";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   return (
     <div className="App">
       <BrowserRouter>
