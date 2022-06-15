@@ -12,9 +12,16 @@ import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import PaidIcon from "@mui/icons-material/Paid";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -89,7 +96,7 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleClick}>
             <ExitToAppIcon className="icon" />
             <span>LogOut</span>
           </li>
