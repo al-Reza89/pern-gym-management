@@ -15,6 +15,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import BaseUrl from "../../api/BaseUrl";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 const theme = createTheme();
 
@@ -23,6 +25,7 @@ const Login = () => {
     email: undefined,
     password: undefined,
   });
+  const [failed, setFailed] = useState(false);
 
   const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -37,7 +40,7 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    dispatch({ type: "LOGIN_START" });
+    // dispatch({ type: "LOGIN_START" });
 
     try {
       const res = await BaseUrl.post("/auth/login", {
@@ -48,7 +51,13 @@ const Login = () => {
       // console.log(res.data.user.isadmin);
 
       if (res.data.user.isadmin) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
+        // console.log(res.data);
+        // console.log("Call dispatch function");
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: res.data.user,
+        });
+
         navigate("/");
       } else {
         dispatch({
@@ -57,12 +66,12 @@ const Login = () => {
         });
       }
     } catch (err) {
-      // console.log(err.response.data.message);
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data.message });
+      setFailed(true);
+      dispatch({ type: "LOGIN_FAILURE", payload: err.message });
     }
   };
 
-  console.log(credentials);
+  // console.log(credentials);
 
   return (
     <ThemeProvider theme={theme}>
@@ -119,7 +128,11 @@ const Login = () => {
             >
               Sign In
             </Button>
-            {/* {error && <span>{error.message}</span>} */}
+            {failed && (
+              <Stack sx={{ width: "100%" }} spacing={2}>
+                <Alert severity="error">Wrong Email or Password</Alert>
+              </Stack>
+            )}
           </Box>
         </Box>
       </Container>
