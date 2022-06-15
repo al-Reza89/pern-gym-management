@@ -1,5 +1,5 @@
 import Home from "./pages/home/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Users from "./pages/users/Users";
 import Instructors from "./pages/instructors/Instructors";
@@ -18,62 +18,124 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(AuthContext);
+
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
             <Route path="users">
-              <Route index element={<Users />} />
               <Route
-                path="addnew"
-                element={<AddUser inputs={userInputs} title="Add New User" />}
+                index
+                element={
+                  <ProtectedRoute>
+                    <Users />
+                  </ProtectedRoute>
+                }
               />
-            </Route>
-            <Route path="instructors">
-              <Route index element={<Instructors />} />
               <Route
                 path="addnew"
                 element={
-                  <AddUser
-                    inputs={instructorInputs}
-                    title="Add New instructor"
-                  />
+                  <ProtectedRoute>
+                    <AddUser inputs={userInputs} title="Add New User" />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="instructors">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <Instructors />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="addnew"
+                element={
+                  <ProtectedRoute>
+                    <AddUser
+                      inputs={instructorInputs}
+                      title="Add New instructor"
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Route>
             <Route path="packages">
-              <Route index element={<Packages />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <Packages />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="addnew"
                 element={
-                  <AddUser inputs={packageInputs} title="Add new Package" />
+                  <ProtectedRoute>
+                    <AddUser inputs={packageInputs} title="Add new Package" />
+                  </ProtectedRoute>
                 }
               />
             </Route>
             <Route path="payments">
-              <Route index element={<Payments />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <Payments />{" "}
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="addnew"
                 element={
-                  <AddUser inputs={paymentInputs} title="Add new Payment" />
+                  <ProtectedRoute>
+                    <AddUser inputs={paymentInputs} title="Add new Payment" />
+                  </ProtectedRoute>
                 }
               />
             </Route>
             <Route path="workoutDetails">
-              <Route index element={<WorkoutDetails />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <WorkoutDetails />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="addnew"
                 element={
-                  <AddUser
-                    inputs={workoutdetailInputs}
-                    title="Add new workout plan"
-                  />
+                  <ProtectedRoute>
+                    <AddUser
+                      inputs={workoutdetailInputs}
+                      title="Add new workout plan"
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Route>
