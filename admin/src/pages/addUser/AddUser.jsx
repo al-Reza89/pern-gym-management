@@ -4,15 +4,18 @@ import "./addUser.scss";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useState } from "react";
+import BaseUrl from "../../api/BaseUrl";
+import { userColumns } from "../../datatablesource";
 
-const AddUser = ({ inputs, title }) => {
+const AddUser = () => {
   return (
     <div className="adduser">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>Add New User</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -29,17 +32,16 @@ const AddUser = ({ inputs, title }) => {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <TextField
-                    id="standard-textarea"
-                    label={input.label}
-                    placeholder={input.placeholder}
-                    multiline
-                    variant="standard"
-                  />
-                </div>
-              ))}
+
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
               <div className="formInput">
                 <Button className="button" variant="contained" color="primary">
                   Submit

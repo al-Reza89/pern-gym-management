@@ -1,12 +1,10 @@
 import "./datatable.scss";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../datatablesource";
 import { Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import BaseUrl from "../../api/BaseUrl";
 
 const Datatable = ({ dataRows, title }) => {
@@ -14,16 +12,6 @@ const Datatable = ({ dataRows, title }) => {
   const path = loction.pathname.split("/")[1];
 
   const [list, setList] = useState([]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await axios.get(`http://localhost:3001/api/v1/${path}`);
-  //     console.log({ data: res.data });
-  //     setList(res.data.data);
-  //   })();
-  // }, [path]);
-  // // console.log({ data: res.data.data });
-  // console.log({ userRows });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +47,7 @@ const Datatable = ({ dataRows, title }) => {
     <div className="datatable">
       <div className="datatableTitle">
         {title}
-        <Link to={`/${path}/addnew`} style={{ textDecoration: "none" }}>
+        <Link to={`/${path}/addnew${path}`} style={{ textDecoration: "none" }}>
           <Button variant="contained" className="link">
             Add New{" "}
           </Button>

@@ -52,10 +52,10 @@ function App() {
                 }
               />
               <Route
-                path="addnew"
+                path="addnewusers"
                 element={
                   <ProtectedRoute>
-                    <AddUser inputs={userInputs} title="Add New User" />
+                    <AddUser />
                   </ProtectedRoute>
                 }
               />
