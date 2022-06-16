@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BaseUrl from "../../api/BaseUrl";
 
-const Datatable = ({ dataRows, title }) => {
+const Datatable = ({ Columns, title }) => {
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
 
@@ -55,7 +55,7 @@ const Datatable = ({ dataRows, title }) => {
       </div>
       <DataGrid
         rows={list}
-        columns={userColumns.concat(actionColumn)}
+        columns={Columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[]}
         getRowId={(row) => row.id}

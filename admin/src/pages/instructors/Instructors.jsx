@@ -3,7 +3,7 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Datatable";
-import { userRows } from "../../datatablesource";
+import { instructorColumns, userRows } from "../../datatablesource";
 
 const Instructors = () => {
   return (
@@ -11,7 +11,7 @@ const Instructors = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable dataRows={userRows} title="Add New Instructor" />
+        <Datatable Columns={instructorColumns} title="Add New Instructor" />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Datatable";
-import { userRows } from "../../datatablesource";
+import { workoutPlanColumns } from "../../datatablesource";
 
 const WorkoutDetails = () => {
   return (
@@ -12,7 +12,10 @@ const WorkoutDetails = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable dataRows={userRows} title="Add New WorkOut Details" />
+        <Datatable
+          Columns={workoutPlanColumns}
+          title="Add New WorkOut Details"
+        />
       </div>
     </div>
   );
