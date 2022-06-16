@@ -1,11 +1,12 @@
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import "./addUser.scss";
+import "./addInstructor.scss";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const AddUser = () => {
+const AddInstructor = () => {
   return (
     <div className="adduser">
       <Sidebar />
@@ -32,25 +33,9 @@ const AddUser = () => {
               <div className="formInput">
                 <TextField
                   id=""
-                  label="First Name"
+                  label="Name"
                   variant="standard"
-                  placeholder="ABC"
-                />
-              </div>
-              <div className="formInput">
-                <TextField
-                  id=""
-                  label="Middle Name"
-                  variant="standard"
-                  placeholder="CDE"
-                />
-              </div>
-              <div className="formInput">
-                <TextField
-                  id=""
-                  label="Last Name"
-                  variant="standard"
-                  placeholder="EFG"
+                  placeholder="instructor name"
                 />
               </div>
               <div className="formInput">
@@ -58,25 +43,26 @@ const AddUser = () => {
                   id=""
                   label="Email"
                   variant="standard"
-                  placeholder="name@gmail.com"
-                />
-              </div>
-              <div className="formInput">
-                <TextField
-                  id="standard-password-input"
-                  label="Password"
-                  type="password"
-                  autoComplete="current-password"
-                  variant="standard"
-                  placeholder="Your password"
+                  placeholder="instructor email"
                 />
               </div>
               <div className="formInput">
                 <TextField
                   id=""
-                  label="Gender"
+                  label="Address"
                   variant="standard"
-                  placeholder="Male/Female"
+                  placeholder="street or road no."
+                />
+              </div>
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label="Member Id"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="standard"
                 />
               </div>
               <div className="formInput">
@@ -92,4 +78,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddInstructor;

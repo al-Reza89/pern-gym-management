@@ -16,6 +16,10 @@ import {
 } from "./formSource";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import AddInstructor from "./pages/addInstructor/AddInstructor";
+import AddPackage from "./pages/addPackage/AddPackage";
+import AddPayment from "./pages/addPayment/AddPayment";
+import AddWorkoutPlan from "./pages/addWorkoutPlan/AddWorkoutPlan";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -73,7 +77,7 @@ function App() {
                 path="addnewinstructors"
                 element={
                   <ProtectedRoute>
-                    <AddUser />
+                    <AddInstructor />
                   </ProtectedRoute>
                 }
               />
@@ -91,7 +95,7 @@ function App() {
                 path="addnewpackages"
                 element={
                   <ProtectedRoute>
-                    <AddUser />
+                    <AddPackage />
                   </ProtectedRoute>
                 }
               />
@@ -110,7 +114,7 @@ function App() {
                 path="addnewpayments"
                 element={
                   <ProtectedRoute>
-                    <AddUser />
+                    <AddPayment />
                   </ProtectedRoute>
                 }
               />
@@ -128,7 +132,7 @@ function App() {
                 path="addnewworkoutDetails"
                 element={
                   <ProtectedRoute>
-                    <AddUser />
+                    <AddWorkoutPlan />
                   </ProtectedRoute>
                 }
               />

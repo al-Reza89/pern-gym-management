@@ -1,11 +1,12 @@
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import "./addUser.scss";
+import "./addWorkoutPlan.scss";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const AddUser = () => {
+const AddWorkoutPlan = () => {
   return (
     <div className="adduser">
       <Sidebar />
@@ -32,51 +33,39 @@ const AddUser = () => {
               <div className="formInput">
                 <TextField
                   id=""
-                  label="First Name"
+                  label="Member Id"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
                   variant="standard"
-                  placeholder="ABC"
                 />
               </div>
               <div className="formInput">
                 <TextField
                   id=""
-                  label="Middle Name"
+                  label="Instructor Id"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
                   variant="standard"
-                  placeholder="CDE"
                 />
               </div>
               <div className="formInput">
                 <TextField
                   id=""
-                  label="Last Name"
+                  label="Work Out Time"
                   variant="standard"
-                  placeholder="EFG"
+                  placeholder="How many hour"
                 />
               </div>
               <div className="formInput">
                 <TextField
                   id=""
-                  label="Email"
+                  label="Details"
                   variant="standard"
-                  placeholder="name@gmail.com"
-                />
-              </div>
-              <div className="formInput">
-                <TextField
-                  id="standard-password-input"
-                  label="Password"
-                  type="password"
-                  autoComplete="current-password"
-                  variant="standard"
-                  placeholder="Your password"
-                />
-              </div>
-              <div className="formInput">
-                <TextField
-                  id=""
-                  label="Gender"
-                  variant="standard"
-                  placeholder="Male/Female"
+                  placeholder="Write workout details"
                 />
               </div>
               <div className="formInput">
@@ -92,4 +81,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddWorkoutPlan;
