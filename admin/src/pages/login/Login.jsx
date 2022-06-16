@@ -40,24 +40,20 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    // dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "LOGIN_START" });
 
     try {
       const res = await BaseUrl.post("/auth/login", {
         email: credentials.email,
         password: credentials.password,
       });
-      // console.log(res);
-      // console.log(res.data.user.isadmin);
 
       if (res.data.user.isadmin) {
-        // console.log(res.data);
-        // console.log("Call dispatch function");
+        document.cookie = res.data.token;
         dispatch({
           type: "LOGIN_SUCCESS",
-          payload: res.data.user,
+          payload: res.data,
         });
-
         navigate("/");
       } else {
         dispatch({
