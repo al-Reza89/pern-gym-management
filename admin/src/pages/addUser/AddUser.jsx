@@ -32,7 +32,51 @@ const AddUser = () => {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
+              <div className="formInput">
+                <TextField
+                  id=""
+                  label=""
+                  placeholder="name"
+                  multiline
+                  variant="standard"
+                />
+              </div>
               <div className="formInput">
                 <TextField
                   id=""

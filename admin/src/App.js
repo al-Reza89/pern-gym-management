@@ -70,13 +70,10 @@ function App() {
                 }
               />
               <Route
-                path="addnew"
+                path="addnewinstructors"
                 element={
                   <ProtectedRoute>
-                    <AddUser
-                      inputs={instructorInputs}
-                      title="Add New instructor"
-                    />
+                    <AddUser />
                   </ProtectedRoute>
                 }
               />
@@ -91,10 +88,10 @@ function App() {
                 }
               />
               <Route
-                path="addnew"
+                path="addnewpackages"
                 element={
                   <ProtectedRoute>
-                    <AddUser inputs={packageInputs} title="Add new Package" />
+                    <AddUser />
                   </ProtectedRoute>
                 }
               />
@@ -110,10 +107,10 @@ function App() {
                 }
               />
               <Route
-                path="addnew"
+                path="addnewpayments"
                 element={
                   <ProtectedRoute>
-                    <AddUser inputs={paymentInputs} title="Add new Payment" />
+                    <AddUser />
                   </ProtectedRoute>
                 }
               />
@@ -128,13 +125,10 @@ function App() {
                 }
               />
               <Route
-                path="addnew"
+                path="addnewworkoutDetails"
                 element={
                   <ProtectedRoute>
-                    <AddUser
-                      inputs={workoutdetailInputs}
-                      title="Add new workout plan"
-                    />
+                    <AddUser />
                   </ProtectedRoute>
                 }
               />
