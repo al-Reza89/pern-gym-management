@@ -9,8 +9,8 @@ const { verifyUser, verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
 router.get("/", getUsers);
-router.delete("/:id", verifyAdmin, deleteUser);
-router.get("/:id", verifyUser, getUser);
-router.put("/:id", verifyUser, updateUser);
+router.delete("/:id", deleteUser);
+router.get("/:id", getUser);
+router.put("/:id", updateUser);
 
 module.exports = router;

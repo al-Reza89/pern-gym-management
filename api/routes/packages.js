@@ -9,10 +9,10 @@ const {
 const { verifyAdmin, verifyToken } = require("../utils/verifyToken");
 
 const router = express.Router();
-router.get("/", verifyToken, getPackages);
-router.post("/", verifyAdmin, createPackage);
-router.delete("/:id", verifyAdmin, deletePackage);
-router.get("/:id", verifyAdmin, getPackage);
-router.put("/:id", verifyAdmin, updatePackage);
+router.get("/", getPackages);
+router.post("/", createPackage);
+router.delete("/:id", deletePackage);
+router.get("/:id", getPackage);
+router.put("/:id", updatePackage);
 
 module.exports = router;

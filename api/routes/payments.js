@@ -10,10 +10,10 @@ const { verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
 
-router.get("/", verifyAdmin, getPayments);
-router.post("/", verifyAdmin, createPayment);
-router.delete("/:id", verifyAdmin, deletePayment);
-router.get("/:id", verifyAdmin, getPayment);
-router.put("/:id", verifyAdmin, updatePayment);
+router.get("/", getPayments);
+router.post("/", createPayment);
+router.delete("/:id", deletePayment);
+router.get("/:id", getPayment);
+router.put("/:id", updatePayment);
 
 module.exports = router;
