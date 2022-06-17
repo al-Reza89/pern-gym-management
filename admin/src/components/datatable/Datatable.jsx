@@ -30,6 +30,18 @@ const Datatable = ({ Columns, title }) => {
     navigate(`/users/${id}/update${path}`);
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await BaseUrl.delete(`/users/${id}`);
+      list.filter((alist) => {
+        return alist.id !== id;
+      });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const actionColumn = [
     {
       field: "action",
@@ -45,7 +57,12 @@ const Datatable = ({ Columns, title }) => {
             >
               Edit
             </div>
-            <div className="deleteButton">Delete</div>
+            <div
+              className="deleteButton"
+              onClick={() => handleDelete(params.row.id)}
+            >
+              Delete
+            </div>
           </div>
         );
       },
