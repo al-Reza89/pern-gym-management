@@ -3,7 +3,7 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Datatable";
-import { instructorColumns, userRows } from "../../datatablesource";
+import { instructorColumns } from "../../datatablesource";
 
 const Instructors = () => {
   return (

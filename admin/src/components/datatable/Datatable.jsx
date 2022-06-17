@@ -2,11 +2,12 @@ import "./datatable.scss";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BaseUrl from "../../api/BaseUrl";
 
 const Datatable = ({ Columns, title }) => {
+  const navigate = useNavigate();
   const loction = useLocation();
   const path = loction.pathname.split("/")[1];
 
@@ -25,16 +26,25 @@ const Datatable = ({ Columns, title }) => {
     fetchData();
   }, [path]);
 
+  const handleUpdate = (id) => {
+    navigate(`/users/${id}/update${path}`);
+  };
+
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
       width: 300,
-      renderCell: () => {
+      renderCell: (params) => {
         return (
           <div className="cellAction">
             <div className="viewButton">View</div>
-            <div className="editButton">Edit</div>
+            <div
+              className="editButton"
+              onClick={() => handleUpdate(params.row.id)}
+            >
+              Edit
+            </div>
             <div className="deleteButton">Delete</div>
           </div>
         );
@@ -55,8 +65,8 @@ const Datatable = ({ Columns, title }) => {
       <DataGrid
         rows={list}
         columns={Columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         getRowId={(row) => row.id}
         headerHeight={75}
         rowHeight={65}

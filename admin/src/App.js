@@ -7,19 +7,13 @@ import Packages from "./pages/packages/Packages";
 import Payments from "./pages/payments/Payments";
 import WorkoutDetails from "./pages/workoutDetails/WorkoutDetails";
 import AddUser from "./pages/addUser/AddUser";
-import {
-  instructorInputs,
-  packageInputs,
-  paymentInputs,
-  userInputs,
-  workoutdetailInputs,
-} from "./formSource";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import AddInstructor from "./pages/addInstructor/AddInstructor";
 import AddPackage from "./pages/addPackage/AddPackage";
 import AddPayment from "./pages/addPayment/AddPayment";
 import AddWorkoutPlan from "./pages/addWorkoutPlan/AddWorkoutPlan";
+import UpdateUser from "./pages/updateUser/UpdateUser";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -60,6 +54,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <AddUser />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id/updateusers"
+                element={
+                  <ProtectedRoute>
+                    <UpdateUser />
                   </ProtectedRoute>
                 }
               />
