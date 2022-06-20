@@ -27,12 +27,12 @@ const Datatable = ({ Columns, title }) => {
   }, [path]);
 
   const handleUpdate = (id) => {
-    navigate(`/users/${id}/update${path}`);
+    navigate(`/${path}/${id}/update${path}`);
   };
 
   const handleDelete = async (id) => {
     try {
-      await BaseUrl.delete(`/users/${id}`);
+      await BaseUrl.delete(`/${path}/${id}`);
       list.filter((alist) => {
         return alist.id !== id;
       });

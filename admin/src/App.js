@@ -14,6 +14,10 @@ import AddPackage from "./pages/addPackage/AddPackage";
 import AddPayment from "./pages/addPayment/AddPayment";
 import AddWorkoutPlan from "./pages/addWorkoutPlan/AddWorkoutPlan";
 import UpdateUser from "./pages/updateUser/UpdateUser";
+import UpdateInstructor from "./pages/updateInstructor/UpdateInstructor";
+import UpdatePackage from "./pages/updatePackage/UpdatePackage";
+import UpdatePayment from "./pages/updatePayment/UpdatePayment";
+import UpdateWorkoutPlan from "./pages/updateWorkoutPlan/UpdateWorkoutPlan";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -83,6 +87,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path=":id/updateInstructors"
+                element={
+                  <ProtectedRoute>
+                    <UpdateInstructor />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
             <Route path="packages">
               <Route
@@ -98,6 +110,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <AddPackage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id/updatePackages"
+                element={
+                  <ProtectedRoute>
+                    <UpdatePackage />
                   </ProtectedRoute>
                 }
               />
@@ -120,6 +140,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path=":id/updatePayments"
+                element={
+                  <ProtectedRoute>
+                    <UpdatePayment />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
             <Route path="workoutDetails">
               <Route
@@ -135,6 +163,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <AddWorkoutPlan />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id/updateworkoutDetails"
+                element={
+                  <ProtectedRoute>
+                    <UpdateWorkoutPlan />
                   </ProtectedRoute>
                 }
               />
