@@ -109,3 +109,14 @@ CREATE TABLE users_info (
 
 
 INSERT INTO users_info ( member_id, package_id, instructor_id, status) VALUES( 1, 1,1,  'inactive');
+
+
+PORT=3001
+
+PGUSER=postgres
+PGHOST=localhost
+PGPASSWORD=124324 
+PGDATABASE=gym
+PGPORT=5432 
+
+JWT = 12345678910
