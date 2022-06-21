@@ -88,7 +88,7 @@ const UpdateUser = () => {
               </div>
               <div className="formInput">
                 <TextField
-                  value={info.middle_name}
+                  value={info.middle_name || ""}
                   id="middle_name"
                   label="Middle Name"
                   onChange={handleChange}
@@ -97,7 +97,7 @@ const UpdateUser = () => {
               </div>
               <div className="formInput">
                 <TextField
-                  value={info.last_name}
+                  value={info.last_name || ""}
                   id="last_name"
                   label="Last Name"
                   onChange={handleChange}
@@ -106,7 +106,7 @@ const UpdateUser = () => {
               </div>
               <div className="formInput">
                 <TextField
-                  value={info.email}
+                  value={info.email || ""}
                   id="email"
                   label="Email"
                   onChange={handleChange}
@@ -115,7 +115,7 @@ const UpdateUser = () => {
               </div>
               <div className="formInput">
                 <TextField
-                  value={info.gender}
+                  value={info.gender || ""}
                   id="gender"
                   label="Gender"
                   onChange={handleChange}
