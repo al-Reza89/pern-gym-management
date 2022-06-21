@@ -38,7 +38,6 @@ const AddInstructor = () => {
     } else if (info.member_id === undefined) {
       return alert("member id must not Be Empty");
     } else {
-      console.log({ info: info });
       try {
         await BaseUrl.post("/instructors", info);
         navigate("/instructors");
