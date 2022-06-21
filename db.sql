@@ -41,7 +41,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (first_name,middle_name,last_name,email,gender,password) values ('Ali','Al','Reza','reza89@gmail.com','male','1234567');
-
+INSERT INTO users (first_name,middle_name,last_name,email,gender,password,isadmin) values ('Omar','Ali','Sultan','Omar@gmail.com','male','1234567',true);
 
 
 
