@@ -16,12 +16,11 @@ const getPayments = async (req, res, next) => {
 const createPayment = async (req, res, next) => {
   try {
     const results = await db.query(
-      "INSERT INTO payments  ( amount, remarks, payment_type, date_created, member_id  ) VALUES( $1,$2,$3,$4,$5) returning *",
+      "INSERT INTO payments  ( amount, remarks, payment_type,  member_id  ) VALUES( $1,$2,$3,$4) returning *",
       [
         req.body.amount,
         req.body.remarks,
         req.body.payment_type,
-        req.body.date_created,
         req.body.member_id,
       ]
     );

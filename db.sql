@@ -62,7 +62,7 @@ CREATE TABLE  payments  (
    amount  BIGINT NOT NULL,
    remarks  text NOT NULL,
    payment_type varchar NOT NULL,
-   date_created  DATE NOT NULL  DEFAULT current_timestamp,
+   date_created  DATE NOT NULL DEFAULT current_timestamp ,
     member_id BIGINT REFERENCES users(id)
 );
 
