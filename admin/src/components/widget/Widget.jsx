@@ -3,8 +3,30 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import { useEffect } from "react";
+import BaseUrl from "../../api/BaseUrl";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Widget = ({ type }) => {
+  const navigate = useNavigate();
+  const [nofusers, setNofusers] = useState(null);
+  const [nofinst, setNofinst] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const users = await BaseUrl.get("/users");
+        const instructors = await BaseUrl.get("/instructors");
+        // console.log({ user: users.data.data.length });
+        // console.log({ inst: instructors.data.data.length });
+        setNofusers(users.data.data.length);
+        setNofinst(instructors.data.data.length);
+      } catch (err) {}
+    };
+
+    fetchData();
+  });
+
   let data;
 
   switch (type) {
@@ -12,7 +34,7 @@ const Widget = ({ type }) => {
       data = {
         titleMain: "USERS",
         title: "Number Of user",
-        NofUser: 100,
+        NofUser: nofusers,
         money: 0,
         link: "See all User",
         icon: (
@@ -29,7 +51,7 @@ const Widget = ({ type }) => {
       data = {
         titleMain: "INSTRUCTORS",
         title: "Number Of instructor",
-        NofUser: 10,
+        NofUser: nofinst,
         money: 0,
         link: "See all instructor",
         icon: (
@@ -79,6 +101,16 @@ const Widget = ({ type }) => {
       break;
   }
 
+  const handleClick = (link) => {
+    if (link === "See all instructor") {
+      navigate("/instructors");
+    } else if (link === "See all User") {
+      navigate("/users");
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
     <div className="widget">
       <div className="left">
@@ -86,7 +118,9 @@ const Widget = ({ type }) => {
         <span className="title">
           {data.title}: {data.NofUser}
         </span>
-        <span className="link">{data.link}</span>
+        <span onClick={() => handleClick(data.link)} className="link">
+          {data.link}
+        </span>
       </div>
       <div className="right">
         <div className="percentage positive  ">
