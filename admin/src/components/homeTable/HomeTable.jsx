@@ -6,70 +6,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useEffect } from "react";
+import BaseUrl from "../../api/BaseUrl";
+import { useState } from "react";
 
 const HomeTable = () => {
-  const rows = [
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Approved",
-    },
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Pending",
-    },
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Approved",
-    },
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Pending",
-    },
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Approved",
-    },
-    {
-      id: 1143155,
-      first_name: "user ",
-      last_name: "name",
-      img: "",
-      email: "noname@gmail.com",
-      joining_date: "22-10-2022",
-      gender: "male",
-      status: "Approved",
-    },
-  ];
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await BaseUrl.get(`/users`);
+        // console.log({ res: response.data.data });
+        setList(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <TableContainer component={Paper} className="table">
@@ -86,7 +41,7 @@ const HomeTable = () => {
           </TableRow>
         </TableHead>
         <TableBody className="cursor">
-          {rows.map((row) => (
+          {list.map((row) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">
@@ -99,9 +54,6 @@ const HomeTable = () => {
               <TableCell className="tableCell">{row.email}</TableCell>
               <TableCell className="tableCell">{row.joining_date}</TableCell>
               <TableCell className="tableCell">{row.gender}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
-              </TableCell>
             </TableRow>
           ))}
         </TableBody>
