@@ -101,15 +101,18 @@ const AddUser = () => {
                   variant="standard"
                   placeholder="EFG"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="formInput">
                 <TextField
                   id="email"
                   label="Email"
+                  type="email"
                   variant="standard"
                   placeholder="name@gmail.com"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="formInput">
@@ -121,6 +124,7 @@ const AddUser = () => {
                   variant="standard"
                   placeholder="Your password"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="formInput">
@@ -130,6 +134,7 @@ const AddUser = () => {
                   variant="standard"
                   placeholder="Male/Female"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="formInput">
