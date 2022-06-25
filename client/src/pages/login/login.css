@@ -27,9 +27,11 @@ body {
 
 .login {
   cursor: pointer;
+  color: white;
 }
 .Register {
   cursor: pointer;
+  color: white;
 }
 
 .form {
