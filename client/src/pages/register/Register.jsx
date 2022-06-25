@@ -1,9 +1,14 @@
-import "./register.scss";
+import "./register.css";
+import logo from "../../images/logo.png";
 
 import React from "react";
 
 const Register = () => {
-  return <div>Register</div>;
+  return (
+    <div className="register">
+      <img className="logo" src={logo} alt="" />
+    </div>
+  );
 };
 
 export default Register;

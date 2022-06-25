@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Offer() {
   return (
@@ -12,7 +13,9 @@ function Offer() {
           Lorem ipsum dolor sit amet consectetur adipisicing.
         </p>
         <div className="pr-btns">
-          <button className="pr-btn">JOIN NOW</button>
+          <Link to={"/register"}>
+            <button className="pr-btn">JOIN NOW</button>
+          </Link>
         </div>
       </div>
     </div>

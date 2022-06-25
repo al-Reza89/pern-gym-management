@@ -1,0 +1,13 @@
+body {
+  background-color: white;
+}
+
+.register {
+  background-color: #000000;
+}
+
+.logo {
+  display: flex;
+  cursor: pointer;
+  margin-left: 50px;
+}
