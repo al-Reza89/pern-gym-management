@@ -26,6 +26,10 @@ const Datatable = ({ Columns, title }) => {
     fetchData();
   }, [path]);
 
+  const handleView = (id) => {
+    navigate(`/${path}/${id}`);
+  };
+
   const handleUpdate = (id) => {
     navigate(`/${path}/${id}/update${path}`);
   };
@@ -50,7 +54,12 @@ const Datatable = ({ Columns, title }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <div className="viewButton">View</div>
+            <div
+              className="viewButton"
+              onClick={() => handleView(params.row.id)}
+            >
+              View
+            </div>
             <div
               className="editButton"
               onClick={() => handleUpdate(params.row.id)}

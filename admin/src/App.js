@@ -18,6 +18,7 @@ import UpdateInstructor from "./pages/updateInstructor/UpdateInstructor";
 import UpdatePackage from "./pages/updatePackage/UpdatePackage";
 import UpdatePayment from "./pages/updatePayment/UpdatePayment";
 import UpdateWorkoutPlan from "./pages/updateWorkoutPlan/UpdateWorkoutPlan";
+import UserDetails from "./pages/userDetails/UserDetails";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -54,6 +55,14 @@ function App() {
                 }
               />
               <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <UserDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="addnewusers"
                 element={
                   <ProtectedRoute>
@@ -80,6 +89,14 @@ function App() {
                 }
               />
               <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <UserDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="addnewinstructors"
                 element={
                   <ProtectedRoute>
@@ -102,6 +119,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Packages />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <UserDetails />
                   </ProtectedRoute>
                 }
               />
@@ -133,6 +158,14 @@ function App() {
                 }
               />
               <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <UserDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="addnewpayments"
                 element={
                   <ProtectedRoute>
@@ -155,6 +188,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <WorkoutDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <UserDetails />
                   </ProtectedRoute>
                 }
               />
