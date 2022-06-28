@@ -68,6 +68,10 @@ const WorkoutPlan = () => {
           <button className="button">submit</button>
         </div>
       </div>
+      <div className="profileView">
+        <h1>View Your Main Profile</h1>
+        <button className="mainButton"> Click</button>
+      </div>
       <div className="copyright">
         <span>@gym.com</span>
       </div>

@@ -10,6 +10,8 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 import React, { useContext, useState } from "react";
 import BaseUrl from "../../api/BaseUrl";
@@ -133,6 +135,11 @@ const Login = () => {
               >
                 Sign In
               </Button>
+              {failed && (
+                <Stack sx={{ width: "100%" }} spacing={2}>
+                  <Alert severity="error">Wrong Email or Password</Alert>
+                </Stack>
+              )}
               <Grid container>
                 <Grid item xs>
                   <Link to={"/"}>Forgot password?</Link>
