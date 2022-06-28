@@ -1,3 +1,31 @@
-.package {
-  background-color: yellow;
+.packageTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.packageCard {
+  display: flex;
+  padding: 20px 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardComponent {
+  background-color: rgb(18, 18, 19);
+  color: white;
+}
+
+.typography {
+  color: white !important;
+}
+
+.cardActions {
+  background-color: rgb(73, 73, 224);
+}
+
+.cardActionsButton {
+  color: white !important;
 }
