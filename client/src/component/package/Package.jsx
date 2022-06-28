@@ -13,7 +13,7 @@ const Package = () => {
     <div className="package">
       <div className="packageContainer">
         <div className="packageTitle">
-          <span>Choose Your Best Package:</span>
+          <h1>Choose Your Best Package:</h1>
         </div>
         <div className="packageDetails">
           <div className="packageCard">
