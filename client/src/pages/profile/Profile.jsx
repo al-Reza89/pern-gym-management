@@ -24,6 +24,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Package from "../../component/package/Package";
 import Instructor from "../../component/instructor/Instructor";
 import WorkoutPlan from "../../component/workoutPlan/WorkoutPlan";
+import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -92,6 +93,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Profile = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -101,6 +103,11 @@ const Profile = () => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+  const handleClick = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate("/");
   };
 
   return (
@@ -157,7 +164,7 @@ const Profile = () => {
                     {text === "Profile" ? (
                       <AccountBoxIcon />
                     ) : text === "Logout" ? (
-                      <LogoutIcon />
+                      <LogoutIcon onClick={handleClick} />
                     ) : (
                       <ManageAccountsIcon />
                     )}

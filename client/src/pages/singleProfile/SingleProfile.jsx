@@ -20,7 +20,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -106,7 +106,7 @@ const SingleProfile = () => {
   const handleClick = () => {
     localStorage.clear();
     window.location.reload();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
