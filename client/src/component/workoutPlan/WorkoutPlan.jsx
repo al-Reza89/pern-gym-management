@@ -64,6 +64,9 @@ const WorkoutPlan = () => {
           rows={4}
           className="plandetails"
         />
+        <div className="plandetails">
+          <button className="button">submit</button>
+        </div>
       </div>
       <div className="copyright">
         <span>@gym.com</span>

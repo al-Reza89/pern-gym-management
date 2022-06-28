@@ -4,16 +4,67 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import React from "react";
+import React, { useContext, useState } from "react";
+import BaseUrl from "../../api/BaseUrl";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
+  const [failed, setFailed] = useState(false);
+
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const res = await BaseUrl.post("/auth/login", {
+        email: credentials.email,
+        password: credentials.password,
+      });
+
+      // console.log(res);
+
+      if (res.data.user) {
+        document.cookie = res.data.token;
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: res.data,
+        });
+        // console.log(res.data.user);
+        navigate(`/user/${res.data.user.id}`);
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "you are not allowed" },
+        });
+      }
+    } catch (err) {
+      setFailed(true);
+      dispatch({ type: "LOGIN_FAILURE", payload: err.message });
+    }
+  };
+
   return (
     <div className="register">
       <div className="navbar">
@@ -59,6 +110,7 @@ const Login = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={handleChange}
               />
               <TextField
                 margin="normal"
@@ -69,6 +121,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}
               />
 
               <Button
@@ -76,6 +129,7 @@ const Login = () => {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleClick}
               >
                 Sign In
               </Button>
