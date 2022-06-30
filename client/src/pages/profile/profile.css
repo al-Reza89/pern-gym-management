@@ -1,0 +1,11 @@
+.logo {
+  height: max-content;
+}
+
+.appbar {
+  background-color: black !important;
+}
+
+.drawer {
+  color: white;
+}
