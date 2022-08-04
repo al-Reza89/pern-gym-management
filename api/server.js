@@ -38,6 +38,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`server is on the port ${port}`);
-});
+function connect() {
+  try {
+    app.listen(port, () => {
+      console.log(`server is on the port ${port}`);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+connect();
