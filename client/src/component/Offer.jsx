@@ -13,7 +13,7 @@ function Offer() {
           Lorem ipsum dolor sit amet consectetur adipisicing.
         </p>
         <div className="pr-btns">
-          <Link to={"/register"}>
+          <Link to={"/"}>
             <button className="pr-btn">JOIN NOW</button>
           </Link>
         </div>
