@@ -38,18 +38,18 @@ const getUser = async (req, res, next) => {
     // const id = req.params.id;
     // console.log(id);
 
-    const instructionIformation = await db.query(
-      `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} `
-    );
+    // const instructionIformation = await db.query(
+    //   `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} `
+    // );
 
     const allIformation = await db.query(
-      `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} inner join payments on payments.member_id=instructors.member_id `
+      `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} left join payments on payments.member_id=instructors.member_id `
     );
 
     res.status(200).json({
       status: "success",
       data: result.rows[0],
-      instructionIformation: instructionIformation.rows,
+      // instructionIformation: instructionIformation.rows,
       allIformation: allIformation.rows,
     });
   } catch (err) {

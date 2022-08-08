@@ -53,8 +53,8 @@ const Login = () => {
           type: "LOGIN_SUCCESS",
           payload: res.data,
         });
-        // console.log(res.data.user);
-        navigate(`/user/${res.data.user.id}`);
+
+        navigate(`/`);
       } else {
         dispatch({
           type: "LOGIN_FAILURE",

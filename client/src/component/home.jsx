@@ -21,7 +21,7 @@ function Header() {
               <button className="header-btn">JOIN US</button>
             </Link>
           ) : (
-            <Link to={`/user/${user.user.id}`}>
+            <Link to={`/user/${user.user?.id}`}>
               <button className="header-btn">VIEW PROFILE</button>
             </Link>
           )}

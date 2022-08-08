@@ -21,8 +21,10 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Chip, Paper } from "@mui/material";
+import BaseUrl from "../../api/BaseUrl";
+import { useEffect, useState } from "react";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -93,6 +95,9 @@ const Drawer = styled(MuiDrawer, {
 const SingleProfile = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { id } = useParams();
+  const [allInformation, setAllInformation] = useState({});
+  const [wait, setWait] = useState(undefined);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -109,6 +114,16 @@ const SingleProfile = () => {
     window.location.reload();
     navigate("/");
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await BaseUrl.get(`/users/${id}`);
+      setAllInformation(res.data);
+    };
+    fetchData();
+  }, []);
+
+  console.log(allInformation);
 
   return (
     <div className="profile">
@@ -212,7 +227,7 @@ const SingleProfile = () => {
             </Typography>
             <div className="about_info">
               <div style={{ width: "100px" }}>Gym ID</div>
-              <div style={{ color: "#dee4e6" }}>2018331077</div>
+              <div style={{ color: "#dee4e6" }}>{allInformation.data?.id}</div>
             </div>
             <Divider
               sx={{
@@ -224,7 +239,9 @@ const SingleProfile = () => {
             />
             <div className="about_info">
               <div style={{ width: "100px" }}>Email</div>
-              <div style={{ color: "#dee4e6" }}>lm10@gmail.com</div>
+              <div style={{ color: "#dee4e6" }}>
+                {allInformation.data?.email}
+              </div>
             </div>
             <Divider
               sx={{
@@ -235,8 +252,10 @@ const SingleProfile = () => {
               }}
             />
             <div className="about_info">
-              <div style={{ width: "100px" }}>Birthday</div>
-              <div style={{ color: "#dee4e6" }}>18/03/2000</div>
+              <div style={{ width: "100px" }}>Joining Date</div>
+              <div style={{ color: "#dee4e6" }}>
+                {allInformation.data?.joining_date}
+              </div>
             </div>
             <Divider
               sx={{
@@ -247,8 +266,10 @@ const SingleProfile = () => {
               }}
             />
             <div className="about_info">
-              <div style={{ width: "100px" }}>Address</div>
-              <div style={{ color: "#dee4e6" }}>Akhalia, Sylhet</div>
+              <div style={{ width: "100px" }}>Gender</div>
+              <div style={{ color: "#dee4e6" }}>
+                {allInformation.data?.gender}
+              </div>
             </div>
             <Divider
               sx={{
@@ -292,7 +313,7 @@ const SingleProfile = () => {
               </Box>
               <div className="about_info_2">
                 <div style={{ width: "100px" }}>Gym ID</div>
-                <div style={{ color: "#000" }}>2018331077</div>
+                <div style={{ color: "#000" }}>{allInformation.data?.id}</div>
               </div>
               <Divider
                 sx={{
@@ -304,7 +325,9 @@ const SingleProfile = () => {
               />
               <div className="about_info_2">
                 <div style={{ width: "100px" }}>Email</div>
-                <div style={{ color: "#000" }}>lm10@gmail.com</div>
+                <div style={{ color: "#000" }}>
+                  {allInformation.data?.email}
+                </div>
               </div>
               <Divider
                 sx={{
@@ -315,8 +338,10 @@ const SingleProfile = () => {
                 }}
               />
               <div className="about_info_2">
-                <div style={{ width: "100px" }}>Birthday</div>
-                <div style={{ color: "#000" }}>18/03/2000</div>
+                <div style={{ width: "100px" }}>Joining Date</div>
+                <div style={{ color: "#000" }}>
+                  {allInformation.data?.joining_date}
+                </div>
               </div>
               <Divider
                 sx={{
@@ -331,72 +356,78 @@ const SingleProfile = () => {
                 <div style={{ color: "#000" }}>Akhalia, Sylhet</div>
               </div>
             </Paper>
-            <Paper
-              variant="outlined"
-              elevation={12}
-              sx={{
-                marginLeft: "45px",
-                marginTop: "25px",
-                width: "150vh",
-                height: "25vh",
-                backgroundColor: "#dee4e6",
-              }}
-            >
-              <Box
-                sx={{
-                  backgroundColor: "#417b8e",
-                  borderRadius: "2px",
-                  height: "40px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ marginLeft: "10px", color: "#dee4e6" }}
+            {allInformation.allIformation.length ? (
+              0(<h1>You are Admin</h1>)
+            ) : (
+              <>
+                <Paper
+                  variant="outlined"
+                  elevation={12}
+                  sx={{
+                    marginLeft: "45px",
+                    marginTop: "25px",
+                    width: "150vh",
+                    height: "25vh",
+                    backgroundColor: "#dee4e6",
+                  }}
                 >
-                  Instructor Information
-                </Typography>
-              </Box>
-              <div style={{ marginTop: "10px" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                hendrerit quam sit amet porta scelerisque. Fusce sed nisi a enim
-                rutrum condimentum eu maximus elit. Etiam consequat, felis sed
-                luctus sodales, turpis sapien egestas erat, quis eleifend enim
-                justo sollicitudin
-              </div>
-            </Paper>
-            <Paper
-              variant="outlined"
-              elevation={12}
-              sx={{
-                marginLeft: "45px",
-                marginTop: "25px",
-                width: "150vh",
-                height: "25vh",
-                backgroundColor: "#dee4e6",
-              }}
-            >
-              <Box
-                sx={{
-                  backgroundColor: "#417b8e",
-                  borderRadius: "2px",
-                  height: "40px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ marginLeft: "10px", color: "#dee4e6" }}
+                  <Box
+                    sx={{
+                      backgroundColor: "#417b8e",
+                      borderRadius: "2px",
+                      height: "40px",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{ marginLeft: "10px", color: "#dee4e6" }}
+                    >
+                      Instructor Information
+                    </Typography>
+                  </Box>
+                  <div style={{ marginTop: "10px" }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nunc hendrerit quam sit amet porta scelerisque. Fusce sed
+                    nisi a enim rutrum condimentum eu maximus elit. Etiam
+                    consequat, felis sed luctus sodales, turpis sapien egestas
+                    erat, quis eleifend enim justo sollicitudin
+                  </div>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  elevation={12}
+                  sx={{
+                    marginLeft: "45px",
+                    marginTop: "25px",
+                    width: "150vh",
+                    height: "25vh",
+                    backgroundColor: "#dee4e6",
+                  }}
                 >
-                  Last Payment
-                </Typography>
-              </Box>
-              <div style={{ marginTop: "10px" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                hendrerit quam sit amet porta scelerisque. Fusce sed nisi a enim
-                rutrum condimentum eu maximus elit. Etiam consequat, felis sed
-                luctus sodales, turpis sapien egestas erat, quis eleifend enim
-                justo sollicitudin
-              </div>
-            </Paper>
+                  <Box
+                    sx={{
+                      backgroundColor: "#417b8e",
+                      borderRadius: "2px",
+                      height: "40px",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{ marginLeft: "10px", color: "#dee4e6" }}
+                    >
+                      Last Payment
+                    </Typography>
+                  </Box>
+                  <div style={{ marginTop: "10px" }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nunc hendrerit quam sit amet porta scelerisque. Fusce sed
+                    nisi a enim rutrum condimentum eu maximus elit. Etiam
+                    consequat, felis sed luctus sodales, turpis sapien egestas
+                    erat, quis eleifend enim justo sollicitudin
+                  </div>
+                </Paper>
+              </>
+            )}
           </Box>
         </Box>
       </Box>
