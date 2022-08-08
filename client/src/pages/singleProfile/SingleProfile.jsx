@@ -96,7 +96,7 @@ const SingleProfile = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { id } = useParams();
-  const [allInformation, setAllInformation] = useState({});
+  const [allInformation?, setAllInformation?] = useState({});
   const [wait, setWait] = useState(undefined);
 
   const handleDrawerOpen = () => {
@@ -112,7 +112,7 @@ const SingleProfile = () => {
   const handleClick = () => {
     localStorage.clear();
     window.location.reload();
-    navigate("/");
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -123,6 +123,7 @@ const SingleProfile = () => {
     fetchData();
   }, []);
 
+  if (!allInformation) return null;
   console.log(allInformation);
 
   return (
@@ -227,7 +228,7 @@ const SingleProfile = () => {
             </Typography>
             <div className="about_info">
               <div style={{ width: "100px" }}>Gym ID</div>
-              <div style={{ color: "#dee4e6" }}>{allInformation.data?.id}</div>
+              <div style={{ color: "#dee4e6" }}>{allInformation?.data?.id}</div>
             </div>
             <Divider
               sx={{
@@ -240,7 +241,7 @@ const SingleProfile = () => {
             <div className="about_info">
               <div style={{ width: "100px" }}>Email</div>
               <div style={{ color: "#dee4e6" }}>
-                {allInformation.data?.email}
+                {allInformation?.data?.email}
               </div>
             </div>
             <Divider
@@ -254,7 +255,7 @@ const SingleProfile = () => {
             <div className="about_info">
               <div style={{ width: "100px" }}>Joining Date</div>
               <div style={{ color: "#dee4e6" }}>
-                {allInformation.data?.joining_date}
+                {allInformation?.data?.joining_date}
               </div>
             </div>
             <Divider
@@ -268,7 +269,7 @@ const SingleProfile = () => {
             <div className="about_info">
               <div style={{ width: "100px" }}>Gender</div>
               <div style={{ color: "#dee4e6" }}>
-                {allInformation.data?.gender}
+                {allInformation?.data?.gender}
               </div>
             </div>
             <Divider
@@ -313,7 +314,7 @@ const SingleProfile = () => {
               </Box>
               <div className="about_info_2">
                 <div style={{ width: "100px" }}>Gym ID</div>
-                <div style={{ color: "#000" }}>{allInformation.data?.id}</div>
+                <div style={{ color: "#000" }}>{allInformation?.data?.id}</div>
               </div>
               <Divider
                 sx={{
@@ -326,7 +327,7 @@ const SingleProfile = () => {
               <div className="about_info_2">
                 <div style={{ width: "100px" }}>Email</div>
                 <div style={{ color: "#000" }}>
-                  {allInformation.data?.email}
+                  {allInformation?.data?.email}
                 </div>
               </div>
               <Divider
@@ -340,7 +341,7 @@ const SingleProfile = () => {
               <div className="about_info_2">
                 <div style={{ width: "100px" }}>Joining Date</div>
                 <div style={{ color: "#000" }}>
-                  {allInformation.data?.joining_date}
+                  {allInformation?.data?.joining_date}
                 </div>
               </div>
               <Divider
@@ -356,8 +357,8 @@ const SingleProfile = () => {
                 <div style={{ color: "#000" }}>Akhalia, Sylhet</div>
               </div>
             </Paper>
-            {allInformation.allIformation.length ? (
-              0(<h1>You are Admin</h1>)
+            {allInformation?.allInformation?.length === 0 ? (
+              <h1>You are Admin</h1>
             ) : (
               <>
                 <Paper

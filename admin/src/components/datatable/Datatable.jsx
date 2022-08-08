@@ -93,7 +93,7 @@ const Datatable = ({ Columns, title }) => {
         columns={Columns.concat(actionColumn)}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        // getRowId={(row) => row.id}
+        getRowId={(row) => row.id}
         headerHeight={75}
         rowHeight={65}
       />
