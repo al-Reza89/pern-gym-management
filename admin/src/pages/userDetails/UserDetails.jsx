@@ -27,7 +27,7 @@ const UserDetails = () => {
 
   console.log(allInformation);
 
-  // if (!allInformation) return null;
+  if (!allInformation) return null;
 
   return (
     <div>

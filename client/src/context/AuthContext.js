@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export const AuthContext = createContext(INITIAL_STATE);
 
 const AuthReducer = (state, action) => {
-  console.log(state);
+  console.log({ action: action.type });
   switch (action.type) {
     case "LOGIN_START":
       return {

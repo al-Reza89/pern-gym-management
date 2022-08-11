@@ -24,7 +24,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Package from "../../component/package/Package";
 import Instructor from "../../component/instructor/Instructor";
 import WorkoutPlan from "../../component/workoutPlan/WorkoutPlan";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -129,7 +129,9 @@ const Profile = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              <img className="logo" src={logo} alt="" />
+              <Link to={"/"}>
+                <img className="logo" src={logo} alt="" />
+              </Link>
             </Typography>
           </Toolbar>
         </AppBar>

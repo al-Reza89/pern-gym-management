@@ -39,7 +39,7 @@ const getUser = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       data: result.rows[0],
-      allInformation: allIformation.rows,
+      allInformation: allIformation.rows[0],
     });
   } catch (err) {
     next(err);

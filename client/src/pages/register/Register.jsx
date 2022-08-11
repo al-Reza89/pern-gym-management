@@ -18,7 +18,7 @@ import BaseUrl from "../../api/BaseUrl";
 import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [failed, setFailed] = useState(false);
   const [info, setInfo] = useState({
@@ -54,18 +54,19 @@ const Register = () => {
 
       try {
         const res = await BaseUrl.post("/auth/register", info);
-
+        console.log({ res });
         dispatch({
           type: "LOGIN_SUCCESS",
           payload: res.data,
         });
-        // console.log(res);
+
         navigate(`/newuser/${res.data.data.id}`);
       } catch (err) {
         return setFailed(true);
       }
     }
   };
+  console.log({ user });
 
   return (
     <div className="register">

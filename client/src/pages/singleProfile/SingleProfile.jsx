@@ -97,7 +97,6 @@ const SingleProfile = () => {
   const [open, setOpen] = React.useState(false);
   const { id } = useParams();
   const [allInformation?, setAllInformation?] = useState({});
-  const [wait, setWait] = useState(undefined);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -124,7 +123,7 @@ const SingleProfile = () => {
   }, []);
 
   if (!allInformation) return null;
-  console.log(allInformation);
+  // console.log(allInformation);
 
   return (
     <div className="profile">
@@ -216,7 +215,7 @@ const SingleProfile = () => {
             <Chip label="active" color="success" sx={{ marginLeft: "110px" }} />
             <div style={{ height: "10px" }} />
             <Typography variant="h6" align="center" sx={{ color: "#dee4e6" }}>
-              Lionel Messi
+              {allInformation?.data?.first_name}
             </Typography>
             <div style={{ marginLeft: "60px" }}>member since 18/06/21</div>
             <div style={{ height: "50px" }} />
@@ -386,12 +385,24 @@ const SingleProfile = () => {
                       Instructor Information
                     </Typography>
                   </Box>
-                  <div style={{ marginTop: "10px" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc hendrerit quam sit amet porta scelerisque. Fusce sed
-                    nisi a enim rutrum condimentum eu maximus elit. Etiam
-                    consequat, felis sed luctus sodales, turpis sapien egestas
-                    erat, quis eleifend enim justo sollicitudin
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                      marginLeft: "15px",
+                    }}
+                  >
+                    <span style={{ fontWeight: "bold" }}>
+                      Name: {allInformation?.allInformation?.instructor_name}{" "}
+                    </span>
+                    <span style={{ fontWeight: "bold" }}>
+                      Email: {allInformation?.allInformation?.instructor_email}{" "}
+                    </span>
+                    <span style={{ fontWeight: "bold" }}>
+                      Address:{" "}
+                      {allInformation?.allInformation?.instructor_address}{" "}
+                    </span>
                   </div>
                 </Paper>
                 <Paper
@@ -419,12 +430,24 @@ const SingleProfile = () => {
                       Last Payment
                     </Typography>
                   </Box>
-                  <div style={{ marginTop: "10px" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc hendrerit quam sit amet porta scelerisque. Fusce sed
-                    nisi a enim rutrum condimentum eu maximus elit. Etiam
-                    consequat, felis sed luctus sodales, turpis sapien egestas
-                    erat, quis eleifend enim justo sollicitudin
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                      marginLeft: "15px",
+                    }}
+                  >
+                    <span style={{ fontWeight: "bold" }}>
+                      Date: {allInformation?.allInformation?.remarks}{" "}
+                    </span>
+                    <span style={{ fontWeight: "bold" }}>
+                      Amount: {allInformation?.allInformation?.amount}{" "}
+                    </span>
+                    <span style={{ fontWeight: "bold" }}>
+                      Payment Type:{" "}
+                      {allInformation?.allInformation?.payment_type}{" "}
+                    </span>
                   </div>
                 </Paper>
               </>
