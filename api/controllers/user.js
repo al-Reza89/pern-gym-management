@@ -33,7 +33,7 @@ const getUser = async (req, res, next) => {
     ]);
 
     const allIformation = await db.query(
-      `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} left join payments on payments.member_id=instructors.member_id `
+      `select * from instructors inner join users on instructors.member_id=users.id and users.id=${req.params.id} left join payments on payments.member_id=instructors.member_id left join packages on packages.member_id=users.id left join workoutPlan on workoutPlan.member_id=users.id `
     );
 
     res.status(200).json({
